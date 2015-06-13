@@ -22,6 +22,6 @@
     <!-- 如果想要实现实时弹幕，请配置好rtmp服务器 -->
     <!--<rtmp>rtmp://127.0.0.1/chat</rtmp>-->
     <!-- 如果想要解析优酷视频，请配置好php代理地址,变量{$id}为优酷vid -->
-    <youku>http://127.0.0.1/curl_youku.php?vid={$id}</youku>
+    <videoXML>http://127.0.0.1/test.xml?vid={$id}</videoXML>
   </server>
 </conf>
