@@ -232,8 +232,8 @@
 				
 				/*** 如果type为空，则为自己的源 ***/
 				/*** 可提供不同的vid与cid,也可单独提供一个 ***/
-				if(config.type == null){
-					config.type = "self";
+				if(config.type == null || config.type == 'sina'){
+					if(config.type == null)config.type = "self"; //然而判断一下
 					if(config.vid == null && config.cid != null){
 						config.vid = config.cid;
 						cmtItem.cid = config.cid;
@@ -241,7 +241,7 @@
 					else if(config.vid != null && config.cid == null){
 						cmtItem.cid = config.vid;						
 					}
-					else if(config.vid != null && config.cid == null)cmtItem.cid = config.cid;
+					else if(config.vid != null && config.cid != null)cmtItem.cid = config.cid;
 					
 					else log('参数有误,无法继续加载');
 				}
