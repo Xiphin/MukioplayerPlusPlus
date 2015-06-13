@@ -322,7 +322,8 @@
                             playerTool.loadSinaVideo(config.vid);
 							break;
 						case 'self':
-							playerTool.loadSelfVideo(config.vid);
+							playerTool.loadSelfVideo(conf._videoServer.replace(/\{\$id\}/ig,config.vid));
+							
                             break;
 						
                     }
