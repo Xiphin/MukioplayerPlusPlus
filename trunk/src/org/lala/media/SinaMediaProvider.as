@@ -16,8 +16,6 @@ package org.lala.media
 	import flash.media.Video;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
-	
-	import org.lala.utils.CommentXMLConfig;
 
     /**
     * jwplayer5的新浪视频播放模块
@@ -47,7 +45,6 @@ package org.lala.media
         /** 模块状态信息,内部使用 **/
         protected var status:String;
         
-		private var youku:CommentXMLConfig;
 		
         /** 构造函数 **/
 		public function SinaMediaProvider() {
@@ -89,7 +86,8 @@ package org.lala.media
 				xmlLoader.addEventListener(IOErrorEvent.IO_ERROR,ioErrorHandler);
 				if(itm.file.substr(0,4) == 'self')
 				{
-					xmlLoader.load(new URLRequest(youku.getSelfURL(_item.file.substr(4))));
+					var url:String = _item.file.substr(4);
+					xmlLoader.load(new URLRequest(url));
 				}
 				else
 				{    

@@ -66,6 +66,10 @@ package org.lala.utils
 		{
 			return _videoServer.replace(/\{\$id\}/ig,id);
 		}
+		public function get selfURL():String
+		{
+			return _videoServer;
+		}
         public function get playerURL():String
         {
             return _root.loaderInfo.url;
