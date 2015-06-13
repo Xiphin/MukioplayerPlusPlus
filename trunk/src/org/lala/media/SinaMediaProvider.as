@@ -1,5 +1,6 @@
 package org.lala.media
 {
+	import com.adobe.crypto.*;
 	import com.longtailvideo.jwplayer.events.MediaEvent;
 	import com.longtailvideo.jwplayer.events.PlayerStateEvent;
 	import com.longtailvideo.jwplayer.media.MediaProvider;
@@ -15,7 +16,8 @@ package org.lala.media
 	import flash.media.Video;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
-	import com.adobe.crypto.*;
+	
+	import org.lala.utils.CommentXMLConfig;
 
     /**
     * jwplayer5的新浪视频播放模块
@@ -45,6 +47,8 @@ package org.lala.media
         /** 模块状态信息,内部使用 **/
         protected var status:String;
         
+		private var youku:CommentXMLConfig;
+		
         /** 构造函数 **/
 		public function SinaMediaProvider() {
 			super('sina');
@@ -77,17 +81,23 @@ package org.lala.media
                 playeItems(itm.videoInfo);
             }
             else
-            {
-    			//开始加载视频描述文件,sina api
-                status = 'prepare';
-                var xmlLoader:URLLoader = new URLLoader();
-                xmlLoader.addEventListener(Event.COMPLETE, xmlLoadHandler);
-                xmlLoader.addEventListener(IOErrorEvent.IO_ERROR,ioErrorHandler);
-                //使用file属性来保存vid
-                xmlLoader.load(new URLRequest(getXMLUrl(_item.file)));
-                //xmlLoader.load(new URLRequest(getXMLUrl('29864957')));
-            }
-            
+			{
+				//开始加载视频描述文件,sina api
+				status = 'prepare';
+				var xmlLoader:URLLoader = new URLLoader();
+				xmlLoader.addEventListener(Event.COMPLETE, xmlLoadHandler);
+				xmlLoader.addEventListener(IOErrorEvent.IO_ERROR,ioErrorHandler);
+				if(itm.file.substr(0,4) == 'self')
+				{
+					xmlLoader.load(new URLRequest(youku.getSelfURL(_item.file.substr(4))));
+				}
+				else
+				{    
+					
+					xmlLoader.load(new URLRequest(getXMLUrl(_item.file)));
+				}
+				
+			}
 			dispatchEvent(new MediaEvent(MediaEvent.JWPLAYER_MEDIA_LOADED));
 		}
 		/**渣浪编码函数**/

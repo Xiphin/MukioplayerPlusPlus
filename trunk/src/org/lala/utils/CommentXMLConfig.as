@@ -7,14 +7,14 @@ package org.lala.utils
     {
         private var _xml:XML;
         /** 加载地址 **/
-        private var _load:String;
-        private var _send:String;
-        private var _onHost:String;
-        private var _root:DisplayObject;
-        private var _gateway:String;
-        private var _rtmp:String;
-		public var _youku:String; //优酷解析PROXY
-		public var _tudou:String; //土豆的
+		public var _load:String;
+		public var _send:String;
+		public var _onHost:String;
+		public var _root:DisplayObject;
+		public var _gateway:String;
+        public var _rtmp:String;
+		public var _videoServer:String; //自解析
+		public var _sina:String;
         public function CommentXMLConfig(_r:DisplayObject)
         {
             _root = _r;
@@ -25,9 +25,8 @@ package org.lala.utils
             _xml = xml;
             _load = _xml.server.load;
             _send = _xml.server.send;
-			_youku = _xml.server.youku;
 			_sina = _xml.server.sina;
-			_tudou = _xml.server.tudou;
+			_videoServer = _xml.server.videoXML;
             _gateway = _xml.server.gateway;
             _onHost = _xml.server.onhost;
 			_rtmp = String(_xml.server.rtmp);
@@ -63,13 +62,9 @@ package org.lala.utils
 		{
 			return _sina.replace(/\{\$id\}/ig,id);
 		}
-		public function getTudouURL(id:String):String
+		public function getSelfURL(id:String):String
 		{
-			return _tudou.replace(/\{\$id\}/ig,id);
-		}
-		public function getYoukuURL(id:String):String
-		{
-			return _youku.replace(/\{\$id\}/ig,id);
+			return _videoServer.replace(/\{\$id\}/ig,id);
 		}
         public function get playerURL():String
         {
