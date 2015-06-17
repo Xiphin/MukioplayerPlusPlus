@@ -100,8 +100,8 @@
         </mx:FormItem>
 		<mx:FormItem>
 			<s:HGroup>
-				<s:CheckBox id="boldCb" label="粗体" selected="@{config.bold}" change="config.save();" />
-				<s:CheckBox id="isChangeUIFontCb" selected="@{config.isChangeUIFont}" label="应用到界面" toolTip="界面也使用相同的字体" change="config.save();"/>
+				<s:CheckBox id="boldCb" label="粗体" selected="@{config.bold}" change="config.save();" skinClass="org.lala.components.skins.SparkCheckBoxSkin" />
+				<s:CheckBox id="isChangeUIFontCb" selected="@{config.isChangeUIFont}" label="应用到界面" toolTip="界面也使用相同的字体" change="config.save();" skinClass="org.lala.components.skins.SparkCheckBoxSkin" />
 			</s:HGroup>
 		</mx:FormItem>	
 		<mx:FormItem label="边框样式"> 
@@ -129,8 +129,8 @@
             </s:HGroup>
         </mx:FormItem>
         <s:HGroup horizontalAlign="right">
-            <s:Button id="getText" label="文本界面" click="getText_clickHandler(event)" />
-            <s:Button label="重置设定" click="config.reset();config.save();" />
+            <s:Button id="getText" label="文本界面" click="getText_clickHandler(event)" skinClass="org.lala.components.skins.SparkButtonSkin" />
+            <s:Button label="重置设定" click="config.reset();config.save();"  skinClass="org.lala.components.skins.SparkButtonSkin" />
         </s:HGroup>
     </mx:Form>
 </s:Group>
