@@ -11,9 +11,10 @@
 
 -->
 
-<!--- The default skin class for the Spark CheckBox component.  
+<!--- The default skin class for a Spark RadioButton component.  
 
-      @see spark.components.CheckBox
+       @see spark.components.RadioButton
+       @see spark.components.RadioButtonGroup
         
       @langversion 3.0
       @playerversion Flash 10
@@ -21,33 +22,33 @@
       @productversion Flex 4
 -->
 <s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
-             xmlns:fb="http://ns.adobe.com/flashbuilder/2009" alpha.disabledStates="0.5">
+    xmlns:fb="http://ns.adobe.com/flashbuilder/2009" alpha.disabledStates="0.5">
 
     <fx:Metadata>
     <![CDATA[ 
         /** 
          * @copy spark.skins.spark.ApplicationSkin#hostComponent
          */
-        [HostComponent("spark.components.CheckBox")]
+        [HostComponent("spark.components.RadioButton")]
     ]]>
     </fx:Metadata> 
     
     <fx:Script fb:purpose="styling">
         /* Define the skin elements that should not be colorized. 
            For button, the graphics are colorized but the label is not. */
-        static private const exclusions:Array = ["labelDisplay", "check"];
+        static private const exclusions:Array = ["labelDisplay", "dot"];
 
-       /** 
-        * @private 
-        */     
+        /**
+         * @private
+         */
         override public function get colorizeExclusions():Array {return exclusions;}
         
         /* Define the symbol fill items that should be colored by the "symbolColor" style. */
-        static private const symbols:Array = ["checkMarkFill"];
-
-       /**
-        * @private 
-        */
+        static private const symbols:Array = ["dotFill"];
+        
+        /**
+         * @private
+         */
         override public function get symbolItems():Array {return symbols};
         
         /**
@@ -62,15 +63,15 @@
     
     <fx:Script>
         <![CDATA[
-            /** 
-             * @private 
-             */     
-            private static const focusExclusions:Array = ["labelDisplay"];
+        /** 
+         * @private 
+         */     
+        private static const focusExclusions:Array = ["labelDisplay"];
 
-            /**
-             * @private
-             */
-            override public function get focusSkinExclusions():Array { return focusExclusions;};
+        /**
+         *  @private
+         */
+        override public function get focusSkinExclusions():Array { return focusExclusions;};
         ]]>
     </fx:Script>
     
@@ -85,9 +86,9 @@
         <s:State name="disabledAndSelected" stateGroups="disabledStates, selectedStates" />
     </s:states>
     
-    <s:Group verticalCenter="0" width="13" height="13" layoutDirection="ltr">
+    <s:Group verticalCenter="0" width="13" height="13">
         <!-- drop shadow -->
-        <s:Rect left="-1" top="-1" right="-1" bottom="-1">
+        <s:Ellipse left="-1" top="-1" right="-1" bottom="-1">
             <s:stroke>
                 <s:LinearGradientStroke rotation="90" weight="1">
                     <s:GradientEntry color="0x000000" 
@@ -96,73 +97,51 @@
                                    alpha.downStates="0" />
                     <s:GradientEntry color="0x000000" 
                                    color.downStates="0xFFFFFF" 
-                                   alpha="0.011"
+                                   alpha="0.121"
                                    alpha.downStates="0.57" />
                 </s:LinearGradientStroke>
             </s:stroke>
-        </s:Rect>
+        </s:Ellipse>
         
         <!-- fill -->
-        <s:Rect left="1" top="1" right="1" bottom="1">
+        <s:Ellipse left="1" top="1" right="1" bottom="1">
             <s:fill>
                 <s:LinearGradient rotation="90">
                     <s:GradientEntry color="0xFFFFFF" 
                                    color.overStates="0xEEEEEE" 
-                                   color.downStates="0xFFFFFF"  />
+                                   color.downStates="0xFFFFFF" />
                 </s:LinearGradient>
             </s:fill>
-        </s:Rect>
+        </s:Ellipse>
 
-        
-        <!-- layer 6: highlight stroke (down state only) -->
-        <s:Rect left="1" top="1" bottom="1" width="1" includeIn="downStates">
-            <s:fill>
-                <s:SolidColor color="0x000000" alpha="0.07" />
-            </s:fill>
-        </s:Rect>
-        <s:Rect right="1" top="1" bottom="1" width="1" includeIn="downStates">
-            <s:fill>
-                <s:SolidColor color="0x000000" alpha="0.07" />
-            </s:fill>
-        </s:Rect>
-        <s:Rect left="1" top="1" right="1" height="1" includeIn="downStates">
-            <s:fill>
-                <s:SolidColor color="0x000000" alpha="0.25" />
-            </s:fill>
-        </s:Rect>
-        <s:Rect left="1" top="2" right="1" height="1" includeIn="downStates">
-            <s:fill>
-                <s:SolidColor color="0x000000" alpha="0.09" />
-            </s:fill>
-        </s:Rect>
-        
         <!-- border - put on top of the fill so it doesn't disappear when scale is less than 1 -->
-        <s:Rect left="0" top="0" right="0" bottom="0">
+        <s:Ellipse left="0" top="0" right="0" bottom="0">
             <s:stroke>
                 <s:LinearGradientStroke rotation="90" weight="1">
-                    <s:GradientEntry color="0xBBBBBB"  />
+                    <s:GradientEntry color="0xBBBBBB" alpha="1" />
                 </s:LinearGradientStroke>
             </s:stroke>
-        </s:Rect>
-    
-        <!-- checkmark -->
-        <!--- The checkmark in the box for this skin. To create a custom check mark, create a custom skin class. -->
-        <s:Path left="2" top="0" includeIn="selectedStates" id="check" itemCreationPolicy="immediate"
-                data="M 9.2 0.1 L 4.05 6.55 L 3.15 5.0 L 0.05 5.0 L 4.6 9.7 L 12.05 0.1 L 9.2 0.1">        
+        </s:Ellipse>
+        
+        <!-- dot -->
+        <!--- Defines the appearance of the RadioButton's dot. To customize the appearance of the dot, create a custom RadioButtonSkin class. -->
+        <s:Path left="4" top="4" includeIn="selectedStates" id="dot" itemCreationPolicy="immediate"
+                data="M 2.5 0 Q 4.5 0.5 5 2.5 Q 4.5 4.5 2.5 5 Q 0.5 4.5 0 2.5 Q 0.5 0.5 2.5 0">
             <s:fill>
-                <s:SolidColor id="checkMarkFill2" color="0x0099ff" alpha="1" />
+                <!--- @private
+                      Defines the appearance of the dot's fill. The default color is 0x000000. The default alpha is .9. -->
+                <s:SolidColor id="dotFill2" color="0x0099ff" alpha="1" />
             </s:fill>
         </s:Path>
-		
 		<s:Path left="2" top="0" id="check2" alpha="0">        
 			<s:fill>
-				<s:SolidColor id="checkMarkFill" color="0x0099ff" alpha="1" />
+				<s:SolidColor id="dotFill" color="0x0099ff" alpha="1" />
 			</s:fill>
 		</s:Path>
     </s:Group>
 
     <!-- Label -->
-    <!--- @copy spark.components.supportClasses.ButtonBase#labelDisplay -->
+    <!---  @copy spark.components.supportClasses.ButtonBase#labelDisplay -->
     <s:Label id="labelDisplay"
              textAlign="start"
              verticalAlign="middle"
