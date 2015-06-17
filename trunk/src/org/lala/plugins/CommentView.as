@@ -217,11 +217,12 @@ package org.lala.plugins
         {
             var cb:IControlbarComponent = player.controls.controlbar;
             this._innerFullScreenButtonIcon = new InnerFullScreenButtonIcon() as Bitmap;
-            //_innerFullScreenButton = cb.addButton(this._innerFullScreenButtonIcon,'WideScreen',innerFullScreenButtonHandler);
+      //      _innerFullScreenButton = cb.addButton(this._innerFullScreenButtonIcon,'WideScreen',innerFullScreenButtonHandler);
             //innerfullscreenbutton,在ZIP皮肤中文本替换会有误差,布局是由文本控制的这一点不太好,fullscreen一替换谅出问题,取另外名字
             
             _loopButtonIcon = new LoopButtonIcon() as Bitmap;
-            cb.addButton(_loopButtonIcon,'LoopBt',loopButtonHandler);
+//            cb.addButton(_loopButtonIcon,'LoopBt',loopButtonHandler);
+			
             _loopButtonIcon.alpha = player.config.repeat != 'single' ? 0.5 : 1;
             //使用ZIP皮肤时必须在装好按钮后设置
             
