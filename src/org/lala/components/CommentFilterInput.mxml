@@ -37,16 +37,16 @@
         ]]>
     </fx:Script>
     <s:HGroup horizontalAlign="center" gap="2" height="22">
-        <s:CheckBox id="enableCb" label="启用" width="100" height="100%" selected="{filter.bEnable}" change="filter.bEnable=enableCb.selected;filter.savetoSharedObject();"/>
-        <s:CheckBox id="regCb" label="支持正则表达式"  width="140" height="100%" selected="{filter.bRegEnable}" change="filter.bRegEnable=regCb.selected;filter.savetoSharedObject();"/>
-        <s:CheckBox id="whilteListCb" label="白名单模式" width="100" height="100%" selected="{filter.bWhiteList}" change="filter.bWhiteList=whilteListCb.selected;filter.savetoSharedObject();"/>
+        <s:CheckBox id="enableCb" label="启用" width="100" height="100%" selected="{filter.bEnable}" change="filter.bEnable=enableCb.selected;filter.savetoSharedObject();" skinClass="org.lala.components.skins.SparkCheckBoxSkin"/>
+        <s:CheckBox id="regCb" label="支持正则表达式"  width="140" height="100%" selected="{filter.bRegEnable}" change="filter.bRegEnable=regCb.selected;filter.savetoSharedObject();" skinClass="org.lala.components.skins.SparkCheckBoxSkin"/>
+        <s:CheckBox id="whilteListCb" label="白名单模式" width="100" height="100%" selected="{filter.bWhiteList}" change="filter.bWhiteList=whilteListCb.selected;filter.savetoSharedObject();" skinClass="org.lala.components.skins.SparkCheckBoxSkin"/>
     </s:HGroup>
     <s:HGroup width="100%">
         <s:TextInput id="input" width="100%" enter="addBt_clickHandler(event)">
             <s:toolTip>普通表达式
 模式表达式:m=[模式号](m=4)
 颜色表达式:c=[颜色十六进制文本](c=ff0000)</s:toolTip>
-        </s:TextInput><s:Button id="addBt" label="添加" width="70" right="0" click="addBt_clickHandler(event);"/>
+        </s:TextInput><s:Button id="addBt" label="添加" width="70" right="0" click="addBt_clickHandler(event);" skinClass="org.lala.components.skins.SparkButtonSkin"/>
     </s:HGroup>
     <mx:DataGrid width="100%" height="100%" bottom="0" dataProvider="{filter.filterSource}">
         <mx:columns>
