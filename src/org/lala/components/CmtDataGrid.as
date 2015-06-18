@@ -43,19 +43,19 @@ package org.lala.components
             
             var color2:uint;
             if(dataIndex<this.dataProvider.length)
-            {
+            {;	
                 if(String(this.dataProvider.getItemAt(dataIndex).mode) == '10')
                 {
-                    color2 = rowIndex % 2 ? 0xFFE2FB : 0xFFF0FD ;
+                    color2 = 0xFFE2FB ;
                 }
                 else
                 {
-                    color2 = color;
+                    color2 = 0xFFFFFF;
                 }
             }
             else
             {
-                color2 = color;
+                color2 = 0xFFFFFF;
             }
             g.beginFill(color2, getStyle("backgroundAlpha"));
             g.drawRect(0, 0, contentHolder.width, height);

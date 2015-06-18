@@ -13,8 +13,8 @@
             </s:layout>
             <s:TextInput id="outputText" width="100%" toolTip="建议使用复制+粘贴" />
             <s:HGroup>
-                <s:Button id="setFromText" click="config.fromString(outputText.text);PopUpManager.removePopUp(panel);config.save();" label="设置"/>
-                <s:Button id="closeBt" click="PopUpManager.removePopUp(panel);" right="0" height="22" label="关闭"/>
+                <s:Button id="setFromText" click="config.fromString(outputText.text);PopUpManager.removePopUp(panel);config.save();" label="设置" skinClass="org.lala.components.skins.SparkButtonSkin"/>
+                <s:Button id="closeBt" click="PopUpManager.removePopUp(panel);" right="0" height="22" label="关闭"  skinClass="org.lala.components.skins.SparkButtonSkin"/>
             </s:HGroup>
         </s:Panel>
         <mx:RadioButtonGroup id="QualitySetting"/>
@@ -121,7 +121,7 @@
         <s:FormItem label="脚本配置"  skinClass="org.lala.components.skins.SparkFormItemSkin">
             <s:CheckBox id="isPlayerControlApiEnableCb" label="启用播放器控制API" toolTip="影响的行为:Player.play(),pause(),seek()" selected="@{config.isPlayerControlApiEnable}" change="config.save();" skinClass="org.lala.components.skins.SparkCheckBoxSkin"/>
         </s:FormItem>
-        <s:FormItem width="333" label="画面质量" toolTip="高画质：土豆原画，优酷超清；一般：土豆480P，优酷高清；流畅：土豆360P，优酷Flv。暂不支持新浪。"  skinClass="org.lala.components.skins.SparkFormItemSkin">
+        <s:FormItem alpha="0" width="300" label="画面质量" toolTip="高画质：土豆原画，优酷超清；一般：土豆480P，优酷高清；流畅：土豆360P，优酷Flv。暂不支持新浪。"  skinClass="org.lala.components.skins.SparkFormItemSkin">
             <s:HGroup>
                 <s:RadioButton label="高画质" groupName="QualitySetting" id="high" click="setQuality();" skinClass="org.lala.components.skins.SparkRadioButtonSkin"/>
                 <s:RadioButton label="一般" groupName="QualitySetting" id="middle" click="setQuality();" skinClass="org.lala.components.skins.SparkRadioButtonSkin"/>

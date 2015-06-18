@@ -37,24 +37,32 @@
         ]]>
     </fx:Script>
     <s:HGroup horizontalAlign="center" gap="2" height="22">
-        <s:CheckBox id="enableCb" label="启用" width="100" height="100%" selected="{filter.bEnable}" change="filter.bEnable=enableCb.selected;filter.savetoSharedObject();" skinClass="org.lala.components.skins.SparkCheckBoxSkin"/>
-        <s:CheckBox id="regCb" label="支持正则表达式"  width="140" height="100%" selected="{filter.bRegEnable}" change="filter.bRegEnable=regCb.selected;filter.savetoSharedObject();" skinClass="org.lala.components.skins.SparkCheckBoxSkin"/>
-        <s:CheckBox id="whilteListCb" label="白名单模式" width="100" height="100%" selected="{filter.bWhiteList}" change="filter.bWhiteList=whilteListCb.selected;filter.savetoSharedObject();" skinClass="org.lala.components.skins.SparkCheckBoxSkin"/>
+        <s:CheckBox id="enableCb" x="6" width="46" height="100%" label="启用"
+					change="filter.bEnable=enableCb.selected;filter.savetoSharedObject();"
+					selected="{filter.bEnable}"
+					skinClass="org.lala.components.skins.SparkCheckBoxSkin"/>
+        <s:CheckBox id="regCb" x="65" width="106" height="100%" label="使用正则表达式"
+					change="filter.bRegEnable=regCb.selected;filter.savetoSharedObject();"
+					selected="{filter.bRegEnable}"
+					skinClass="org.lala.components.skins.SparkCheckBoxSkin"/>
+        <s:CheckBox id="whilteListCb" x="163" width="86" height="100%" label="白名单模式"
+					change="filter.bWhiteList=whilteListCb.selected;filter.savetoSharedObject();"
+					selected="{filter.bWhiteList}"
+					skinClass="org.lala.components.skins.SparkCheckBoxSkin"/>
     </s:HGroup>
     <s:HGroup width="100%">
         <s:TextInput id="input" width="100%" enter="addBt_clickHandler(event)">
             <s:toolTip>普通表达式
 模式表达式:m=[模式号](m=4)
 颜色表达式:c=[颜色十六进制文本](c=ff0000)</s:toolTip>
-        </s:TextInput><s:Button id="addBt" label="添加" width="70" right="0" click="addBt_clickHandler(event);" skinClass="org.lala.components.skins.SparkButtonSkin"/>
+        </s:TextInput><s:Button id="addBt" label="添加" width="50" right="5" click="addBt_clickHandler(event);" skinClass="org.lala.components.skins.SparkButtonSkin"/>
     </s:HGroup>
     <mx:DataGrid width="100%" height="100%" bottom="0" dataProvider="{filter.filterSource}">
         <mx:columns>
             <mx:DataGridColumn headerText="删" dataField="" itemRenderer="org.lala.components.filterInputElements.DeleteButtonRender" width="20"/>
             <mx:DataGridColumn headerText="过滤类别" dataField="mode" labelFunction="modeLabel"/>
             <mx:DataGridColumn headerText="关键词" dataField="exp" itemRenderer="org.lala.components.filterInputElements.ColorFieldRender"/>
-            <mx:DataGridColumn headerText="源文本" dataField="data"/>
-            <mx:DataGridColumn headerText="使用状态" dataField="enable" itemRenderer="org.lala.components.filterInputElements.EnableFieldRender"/>
+            <mx:DataGridColumn headerText="状态" dataField="enable" itemRenderer="org.lala.components.filterInputElements.EnableFieldRender"/>
         </mx:columns>
     </mx:DataGrid>
 </s:Group>

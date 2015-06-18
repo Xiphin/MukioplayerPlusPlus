@@ -51,6 +51,7 @@ package org.lala.utils
                     obj.color = uint(attrs[2]);
                     obj.mode = uint(attrs[3]);
                     obj.date = date(new Date(parseInt(attrs[5])));
+					obj.Fdate = fullDate(new Date(parseInt(attrs[5])));//创建长与短的时间类型
                     obj.author = attrs[4];
                     obj.text = text_string(item);
                     obj.border = false;
@@ -72,6 +73,7 @@ package org.lala.utils
                 obj.size = uint(attrs[2]);
                 obj.color = uint(attrs[3]);
                 obj.date = date(new Date(attrs[4] * 1000));
+				obj.Fdate = fullDate(new Date(attrs[4] * 1000)); //创建长与短的时间类型				
                 obj.border = false;
                 obj.id = length ++;
                 
@@ -347,8 +349,21 @@ package org.lala.utils
             {
                 now = new Date();
             }
-            return now.getFullYear() + "-" + zero(now.getMonth() + 1) + "-" + zero(now.getDate()) + " " + zero(now.getHours()) + ":" + zero(now.getMinutes()) + ":" + zero(now.getSeconds());
+			//不要年份了！！
+            //return now.getFullYear() + "-" + zero(now.getMonth() + 1) + "-" + zero(now.getDate()) + " " + zero(now.getHours()) + ":" + zero(now.getMinutes()) + ":" + zero(now.getSeconds());
+			return zero(now.getMonth() + 1) + "-" + zero(now.getDate()) + " " + zero(now.getHours()) + ":" + zero(now.getMinutes());
         }
+		/** 将日期转换为常用格式 **/
+		public static function fullDate(now:Date=null) : String
+		{
+			if (now == null)
+			{
+				now = new Date();
+			}
+			//要年份
+			return now.getFullYear() + "-" + zero(now.getMonth() + 1) + "-" + zero(now.getDate()) + " " + zero(now.getHours()) + ":" + zero(now.getMinutes()) + ":" + zero(now.getSeconds());
+			//return zero(now.getMonth() + 1) + "-" + zero(now.getDate()) + " " + zero(now.getHours()) + ":" + zero(now.getMinutes());
+		}
         /** 数字个位前加0 **/
         public static function zero(nbr:Number):String 
         {
