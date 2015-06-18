@@ -6,6 +6,11 @@
 {
     font-weight:bold;
 }
+.cmtDataGridStyle
+{
+	verticalGridLines: false;
+	horizontalGridLineColor:"0x000000";
+}
 .italicBtStyle
 {
     font-style:italic;
@@ -21,10 +26,11 @@ global
 mx|ToolTip
 {
     backgroundColor: white;
-    backgroundAlpha: 0.7;
+    backgroundAlpha: 0.85;
     cornerRadius: 0;
     color: black;
     font-size:12px;
+	
 }
 .boldStyle
 {

@@ -78,7 +78,7 @@
         <s:Label text="清除" click="srcText.text='';" toolTip="点击清除" buttonMode="true" color="blue"/>
         <s:Label text="语言参考" click="navigateToURL(new URLRequest('http://code.google.com/p/mukioplayer/wiki/MukioPlayerScript'));" toolTip="查看API" buttonMode="true" color="blue"/>
     </s:HGroup>
-    <s:TextArea id="srcText" width="100%" height="40%" fontFamily="Courier New" fontSize="14" color="#0321A3" keyFocusChange="srcText_keyFocusChangeHandler(event)"/>
+    <s:TextArea id="srcText" width="100%" height="40%" fontFamily="Courier New" fontSize="14" color="#0321A3" keyFocusChange="srcText_keyFocusChangeHandler(event)" />
     <mx:HBox>
         <s:Button id="previewBt" label="预览" click="previewBt_clickHandler(event)" />        
         <s:Button id="runBt" label="送出" click="runBt_clickHandler(event)"/>

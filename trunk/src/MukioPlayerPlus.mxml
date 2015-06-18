@@ -17,15 +17,16 @@
 		<fx:String id='version'>1.02</fx:String>
 		<fx:Array id="cmtColumns">
 			<mx:DataGridColumn headerText="时间" dataField="stime" width="45" labelFunction="digit"/>
-			<mx:DataGridColumn headerText="评论({commentView.provider.commentResource.length}条)" dataField="text"  minWidth="150" minWidth.wideScreen="110" labelFunction="textTrim"/>
-			<mx:DataGridColumn dataField="date" headerText="发送日期" includeIn="normal" width="130"/>
+			<mx:DataGridColumn headerText="评论({commentView.provider.commentResource.length}条)" dataField="text" labelFunction="textTrim" dataTipField="text" dataTipFunction="textTrim2" showDataTips="true"/>
+			<mx:DataGridColumn dataField="date" dataTipField="Fdate" headerText="发送日期" includeIn="normal" width="90" showDataTips="true"/>
 		</fx:Array>
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[
-			import org.lala.components.CustomHSlider;
 			import com.longtailvideo.jwplayer.player.Player;
 			import com.longtailvideo.jwplayer.utils.Strings;
+			
+			import flash.external;
 			
 			import mx.controls.Alert;
 			import mx.events.FlexEvent;
@@ -46,9 +47,7 @@
 			import org.lala.utils.CommentDataParser;
 			import org.lala.utils.CommentXMLConfig;
 			import org.lala.utils.MukioTaskQueue;
-			import org.lala.utils.PlayerTool;
-			
-			import flash.external;//用于与外部网页进行交互
+			import org.lala.utils.PlayerTool;//用于与外部网页进行交互
 			
 			private var savedState:String = 'normal';
 			private var isInnerFullScreenState:Boolean = false;
@@ -408,8 +407,14 @@
 			/** 辅助函数:LabelFunction **/
 			private function textTrim(item:Object, column:DataGridColumn):String
 			{
-				return CommentDataParser.cut((item['text']));
+				return CommentDataParser.cut((item['text']),28);
 			}
+			/** 辅助函数:LabelFunction **/
+			private function textTrim2(item:Object):String
+			{
+				return (item['text']).substr(0,100);
+				//return CommentDataParser.cut((item['text']),28);
+			}			
 			/** 在状态改变后保存状态配置,如果配置实例存在的话 **/
 			private function application1_currentStateChangeHandler(event:StateChangeEvent):void
 			{
@@ -483,19 +488,17 @@
 				<mk:IconButton id="wideToggleBt" icon="@Embed(source='assets/wideScreenIcon.png')" right="0" click="wideToggleEvent()" width="26" height="22" skinClass="org.lala.components.skins.IconButtonSkin"/>
 			</s:HGroup>
 		</s:Group>
-		<mx:TabNavigator height="100%" width="100%" tabStyleName="boldStyle" excludeFrom="fullScreen" paddingTop="0" borderVisible="false" width.normal="410" width.wideScreen="0" right="0" top="0">
+		<mx:TabNavigator height="100%" width="100%" tabStyleName="boldStyle" excludeFrom="fullScreen" paddingTop="0" borderVisible="false" width.normal="300" width.wideScreen="0" right="0" top="0">
 			<s:NavigatorContent width="100%" height="100%" label="弹幕"
 								icon="@Embed(source='assets/listIcon.png')">
-				<mk:CmtDataGrid id="cmtTable" headerStyleName="boldStyle" x="0" y="0" width="100%" height="100%" horizontalScrollPolicy.wideScreen="on" dataProvider="{commentView.provider.commentResource}" columns="{cmtColumns}" />
+				<mk:CmtDataGrid id="cmtTable" headerStyleName="boldStyle" styleName="cmtDataGridStyle" x="0" y="0" width="100%" height="100%" horizontalScrollPolicy.wideScreen="on" dataProvider="{commentView.provider.commentResource}" columns="{cmtColumns}" />
 			</s:NavigatorContent>
-			<mx:Accordion label="设置" headerStyleName="boldStyle" icon="@Embed(source='assets/configIcon.png')">
 				<s:NavigatorContent label="系统设置" width="100%" height="100%">
 					<mk:CommentConfigInput id="commentConfigInput" enabled="{currentState=='normal'}"/>
 				</s:NavigatorContent>
 				<s:NavigatorContent label="过滤配置" width="100%" height="100%">
 					<mk:CommentFilterInput id="commentFilterInput" enabled="{currentState=='normal'}"/>
 				</s:NavigatorContent>
-			</mx:Accordion>
 			<mx:Accordion label="高级弹幕" headerStyleName="boldStyle" icon="@Embed(source='assets/scriptIcon.png')">
 				<s:NavigatorContent label="zoome字幕" width="100%" height="100%">
 					<mk:ZoomeCommentInput id="zoomeCommentInput" enabled="{currentState=='normal'}"/>
