@@ -9,7 +9,7 @@
 .cmtDataGridStyle
 {
 	verticalGridLines: false;
-	horizontalGridLineColor:"0x000000";
+	horizontalGridLineColor:"0xDDDDDD";
 }
 .italicBtStyle
 {
@@ -35,4 +35,22 @@ mx|ToolTip
 .boldStyle
 {
     fontWeight:bold;
+}
+
+.customAccordionHeadStyles {
+	skin: ClassReference("org.lala.components.skins.AccordionHeaderSkin");
+	fontWeight:bold;
+} 
+
+.tabBar{
+	skin: ClassReference("org.lala.components.skins.TabSkin");
+	up-skin:ClassReference("org.lala.components.skins.TabSkin");	
+	down-skin:ClassReference("org.lala.components.skins.TabSkin");	
+	over-skin:ClassReference("org.lala.components.skins.TabSkin");
+	disabled-skin:ClassReference("org.lala.components.skins.TabSkin");	
+	selected-up-skin:ClassReference("org.lala.components.skins.TabSkin");	
+	selected-down-skin:ClassReference("org.lala.components.skins.TabSkin");	
+	selected-over-skin:ClassReference("org.lala.components.skins.TabSkin");	
+	selected-disabled-skin:ClassReference("org.lala.components.skins.TabSkin");
+	fontWeight:bold;
 }

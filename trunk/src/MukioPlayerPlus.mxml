@@ -488,18 +488,20 @@
 				<mk:IconButton id="wideToggleBt" icon="@Embed(source='assets/wideScreenIcon.png')" right="0" click="wideToggleEvent()" width="26" height="22" skinClass="org.lala.components.skins.IconButtonSkin"/>
 			</s:HGroup>
 		</s:Group>
-		<mx:TabNavigator height="100%" width="100%" tabStyleName="boldStyle" excludeFrom="fullScreen" paddingTop="0" borderVisible="false" width.normal="300" width.wideScreen="0" right="0" top="0">
+		<mx:TabNavigator tabStyleName="tabBar" height="100%" width="100%" excludeFrom="fullScreen" paddingTop="0" borderVisible="false" width.normal="300" width.wideScreen="0" right="0" top="0">
 			<s:NavigatorContent width="100%" height="100%" label="弹幕"
 								icon="@Embed(source='assets/listIcon.png')">
-				<mk:CmtDataGrid id="cmtTable" headerStyleName="boldStyle" styleName="cmtDataGridStyle" x="0" y="0" width="100%" height="100%" horizontalScrollPolicy.wideScreen="on" dataProvider="{commentView.provider.commentResource}" columns="{cmtColumns}" />
+				<mk:CmtDataGrid id="cmtTable"  headerSeparatorSkin="org.lala.components.skins.DataGridHeaderSeparator" headerStyleName="boldStyle"  borderColor="0xDDDDDD" headerBackgroundSkin="org.lala.components.DataGridHeaderSkin" styleName="cmtDataGridStyle" x="0" y="0" width="100%" height="100%" horizontalScrollPolicy.wideScreen="on" dataProvider="{commentView.provider.commentResource}" columns="{cmtColumns}" />
 			</s:NavigatorContent>
+			<mx:Accordion label="弹幕设置" headerStyleName="customAccordionHeadStyles" borderColor="0xDDDDDD" icon="@Embed(source='assets/scriptIcon.png')">
 				<s:NavigatorContent label="系统设置" width="100%" height="100%">
 					<mk:CommentConfigInput id="commentConfigInput" enabled="{currentState=='normal'}"/>
 				</s:NavigatorContent>
 				<s:NavigatorContent label="过滤配置" width="100%" height="100%">
 					<mk:CommentFilterInput id="commentFilterInput" enabled="{currentState=='normal'}"/>
 				</s:NavigatorContent>
-			<mx:Accordion label="高级弹幕" headerStyleName="boldStyle" icon="@Embed(source='assets/scriptIcon.png')">
+			</mx:Accordion>
+			<mx:Accordion label="高级弹幕" headerStyleName="customAccordionHeadStyles" borderColor="0xDDDDDD" icon="@Embed(source='assets/scriptIcon.png')">
 				<s:NavigatorContent label="zoome字幕" width="100%" height="100%">
 					<mk:ZoomeCommentInput id="zoomeCommentInput" enabled="{currentState=='normal'}"/>
 				</s:NavigatorContent>
