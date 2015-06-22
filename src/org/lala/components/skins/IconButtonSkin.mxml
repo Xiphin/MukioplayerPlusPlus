@@ -105,9 +105,7 @@
 	<s:Line id="border2" xFrom="0" xTo="0" yFrom="0" yTo="22" >
 		<s:stroke>
 			<s:LinearGradientStroke rotation="90" weight="1">
-				<s:GradientEntry color="0x999999" 
-								 alpha="0.5625"
-								 alpha.down="0.6375" />
+				<s:GradientEntry color="0xDDDDDD" />
 			</s:LinearGradientStroke>
 		</s:stroke>
 	</s:Line>

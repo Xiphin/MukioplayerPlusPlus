@@ -210,18 +210,20 @@
         <mx:FormItem label="位置">
             <s:HGroup gap="2" verticalAlign="middle" height="20">
                 <s:Label text="X:" width="100%"/>
-                <s:NumericStepper id="xpos" maximum="540" minimum="0" height="100%" />
+                <s:NumericStepper id="xpos" height="100%" maximum="540" minimum="0"
+								  width="53"/>
                 <s:Label text="Y:" width="100%"/>
-                <s:NumericStepper id="ypos" maximum="432" minimum="0" height="100%" />
-                <s:ToggleButton id="positionBt" label="拾取" click="positionBt_clickHandler(event)" toolTip="在弹出的网格上点一下" skinClass="org.lala.components.skins.SparkButtonSkin"/>
+                <s:NumericStepper id="ypos" width="53" maximum="432" minimum="0" height="100%" />
+                <s:ToggleButton id="positionBt" label="拾取" width="50" click="positionBt_clickHandler(event)" toolTip="在弹出的网格上点一下" skinClass="org.lala.components.skins.SparkToggleButtonSkin"/>
             </s:HGroup>
         </mx:FormItem>
         <mx:FormItem label="内容">
-            <s:TextArea id="commentIpt" width="240" height="40" maxChars="255" />
+            <s:TextArea id="commentIpt" width="186" height="40" borderColor="0xDDDDDD" maxChars="255"/>
         </mx:FormItem>
         <mx:FormItem label="命令">
             <s:HGroup gap="1">
-                <s:TextInput id="commandIpt" text="请使用脚本弹幕功能" width="190" height="20" editable="false"/>
+                <s:TextInput id="commandIpt" width="134" height="20" borderColor="0xDDDDDD"
+							 editable="false" text="请使用脚本弹幕功能"/>
                 <s:Button id="sendBt" label="发送" width="50" height="20" click="sendBt_clickHandler(event)"  skinClass="org.lala.components.skins.SparkButtonSkin"/>
             </s:HGroup>
         </mx:FormItem>
@@ -229,16 +231,18 @@
             <mx:ColorPicker id="colorCpk" />
         </mx:FormItem>
         <mx:FormItem label="字号">
-            <s:DropDownList id="sizeCb" labelField="label" selectedIndex="0" dataProvider="{sizeArr}"  skinClass="org.lala.components.skins.SparkDropDownListSkin"/>
+            <s:DropDownList id="sizeCb" dataProvider="{sizeArr}" labelField="label" selectedIndex="0"
+							skinClass="org.lala.components.skins.SparkDropDownListSkin"
+							width="93"/>
         </mx:FormItem>
         <mx:FormItem label="文字格式">
             <s:HGroup gap="1">
-                <s:ToggleButton id="boldBt" label="B" width="30" height="20" styleName="boldBtStyle" skinClass="org.lala.components.skins.SparkButtonSkin"/>
-                <s:ToggleButton id="italicBt" label="I" width="30" height="20" styleName="italicBtStyle" skinClass="org.lala.components.skins.SparkButtonSkin"/>
-                <s:ToggleButton id="underlineBt" label="U" width="30" height="20" styleName="underlineBtStyle" skinClass="org.lala.components.skins.SparkButtonSkin"/>
+                <s:ToggleButton id="boldBt" label="B" width="30" height="20" styleName="boldBtStyle" skinClass="org.lala.components.skins.SparkToggleButtonSkin"/>
+                <s:ToggleButton id="italicBt" label="I" width="30" height="20" styleName="italicBtStyle" skinClass="org.lala.components.skins.SparkToggleButtonSkin"/>
+                <s:ToggleButton id="underlineBt" label="U" width="30" height="20" styleName="underlineBtStyle" skinClass="org.lala.components.skins.SparkToggleButtonSkin"/>
             </s:HGroup>
         </mx:FormItem>
-        <mx:FormItem label="背景透明度:">
+        <mx:FormItem label="背景透明度">
             <mx:toolTip>0:完全透明
 100:不透明
 建议设置在80以下</mx:toolTip>
@@ -256,22 +260,26 @@
         <mx:FormItem label="进场效果">
             <s:HGroup>
                 <s:DropDownList id="inEffectCb" labelField="label" dataProvider="{inEffectArr}" selectedIndex="0" skinClass="org.lala.components.skins.SparkDropDownListSkin"/>
-                <s:HSlider id="inEffectSld" maximum="360" minimum="0" snapInterval="15" value="0" width="100" height="14" liveDragging="true" enabled="{inEffectCb.selectedIndex==3}"   skinClass="org.lala.components.skins.SparkHSliderSkin"/>
-                <s:Label id="inEffectLb" text="{inEffectSld.value}"/>
-            </s:HGroup>
+           </s:HGroup>
+			<s:HGroup>
+				<s:HSlider id="inEffectSld" maximum="360" minimum="0" snapInterval="15" value="0" width="100" height="14" liveDragging="true" enabled="{inEffectCb.selectedIndex==3}"   skinClass="org.lala.components.skins.SparkHSliderSkin"/>
+				<s:Label id="inEffectLb" text="{inEffectSld.value}"/>
+			</s:HGroup>
         </mx:FormItem>
         <mx:FormItem label="退场效果">
             <s:HGroup>
                 <s:DropDownList id="outEffectCb" labelField="label" dataProvider="{outEffectArr}" selectedIndex="0" skinClass="org.lala.components.skins.SparkDropDownListSkin"/>
-                <s:HSlider id="outEffectSld" maximum="360" minimum="0" snapInterval="15" value="0" width="100" height="14" liveDragging="true" enabled="{outEffectCb.selectedIndex==3}"  skinClass="org.lala.components.skins.SparkHSliderSkin"/>
-                <s:Label id="outEffectLb" text="{outEffectSld.value}"/>
             </s:HGroup>
+			<s:HGroup>
+				<s:HSlider id="outEffectSld" maximum="360" minimum="0" snapInterval="15" value="0" width="100" height="14" liveDragging="true" enabled="{outEffectCb.selectedIndex==3}"  skinClass="org.lala.components.skins.SparkHSliderSkin"/>
+				<s:Label id="outEffectLb" text="{outEffectSld.value}"/>
+			</s:HGroup>
         </mx:FormItem>
         <mx:FormItem label="打字效果">
             <s:CheckBox id="lupinCkb"  skinClass="org.lala.components.skins.SparkCheckBoxSkin"/>
         </mx:FormItem>
     </mx:Form>
-    <zoomeInputElements:Compass width="100" height="100" x="240" y="120" inIdt="{inEffectSld.value}" outIdt="{outEffectSld.value}" inVisible="{inEffectCb.selectedIndex==3}" outVisible="{outEffectCb.selectedIndex==3}"/>
+    <zoomeInputElements:Compass alpha="0" width="100" height="100" x="240" y="120" inIdt="{inEffectSld.value}" outIdt="{outEffectSld.value}" inVisible="{inEffectCb.selectedIndex==3}" outVisible="{outEffectCb.selectedIndex==3}"/>
     <s:Group id="grid" buttonMode="true" width="540" height="416" x="{x0}" y="{y0}" visible="false" visible.cover="true" click="grid_clickHandler(event)" mouseMove="grid_mouseMoveHandler(event)">
         <s:Rect x="0" y="0" width="100%" height="100%" alpha="0.2">
             <s:fill>

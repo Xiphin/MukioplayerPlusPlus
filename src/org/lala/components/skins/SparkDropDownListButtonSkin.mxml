@@ -72,8 +72,8 @@
                  cornerRadius = cr;
                  shadow.radiusX = cornerRadius;
                  fill.radiusX = cornerRadius;
-                 lowlight.radiusX = cornerRadius;
-                 highlight.radiusX = cornerRadius;
+                // lowlight.radiusX = cornerRadius;
+                 //highlight.radiusX = cornerRadius;
                  border.radiusX = cornerRadius;
              }
              
@@ -103,11 +103,11 @@
                 <s:GradientEntry color="0x000000" 
                                color.down="0xFFFFFF"
                                alpha="0.01"
-                               alpha.down="0" />
+                               alpha.down="0.5" />
                 <s:GradientEntry color="0x000000" 
                                color.down="0xFFFFFF" 
-                               alpha="0.07"
-                               alpha.down="0.5" />
+                               alpha="0.01"
+                               alpha.down="0" />
             </s:LinearGradient>
         </s:fill>
     </s:Rect>
@@ -119,46 +119,11 @@
             <s:LinearGradient rotation="90">
                 <s:GradientEntry color="0xFFFFFF" 
                                color.over="0xEEEEEE" 
-                               color.down="0xE0E0E0" 
-                               alpha="0.85"  />
+                               color.down="0xFFFFFF"  />
             </s:LinearGradient>
         </s:fill>
     </s:Rect>
-    
-    <!-- layer 3: fill lowlight -->
-    <!--- @private -->
-    <s:Rect id="lowlight" left="1" right="1" top="1" bottom="1" radiusX="2">
-        <s:fill>
-            <s:LinearGradient rotation="270">
-                <s:GradientEntry color="0x000000" ratio="0.0" alpha="0.0627" />
-                <s:GradientEntry color="0x000000" ratio="0.48" alpha="0.0099" />
-                <s:GradientEntry color="0x000000" ratio="0.48001" alpha="0" />
-            </s:LinearGradient>
-        </s:fill>
-    </s:Rect>
-    
-    <!-- layer 4: fill highlight -->
-    <!--- @private -->
-    <s:Rect id="highlight" left="1" right="1" top="1" bottom="1" radiusX="2">
-        <s:fill>
-            <s:LinearGradient rotation="90">
-                <s:GradientEntry color="0xFFFFFF"
-                                 ratio="0.0"
-                                 alpha="0.33" 
-                                 alpha.over="0.22" 
-                                 alpha.down="0.12"/>
-                <s:GradientEntry color="0xFFFFFF"
-                                 ratio="0.48"
-                                 alpha="0.33"
-                                 alpha.over="0.22"
-                                 alpha.down="0.12" />
-                <s:GradientEntry color="0xFFFFFF"
-                                 ratio="0.48001"
-                                 alpha="0" />
-            </s:LinearGradient>
-        </s:fill>
-    </s:Rect>
-    
+ 
     <!-- layer 5: highlight stroke (all states except down) -->
     <!--- @private -->
     <s:Rect id="highlightStroke" left="1" right="1" top="1" bottom="1" excludeFrom="down" radiusX="2">
@@ -205,12 +170,7 @@
     <s:Rect right="18" top="1" bottom="1" width="1">
         <s:fill>
              <s:LinearGradient rotation="90">
-                <s:GradientEntry color="0x000000" 
-                               alpha="0.5625"
-                               alpha.down="0.6375" />
-                <s:GradientEntry color="0x000000" 
-                               alpha="0.75" 
-                               alpha.down="0.85" />
+                <s:GradientEntry color="0xDDDDDD" />
             </s:LinearGradient>
         </s:fill>
     </s:Rect>
@@ -224,11 +184,11 @@
                 <!--- @private
                       The first part of the arrow's gradient fill. 
                       The default alpha is .6. The default color if 0x000000. -->
-                <s:GradientEntry id="arrowFill1" color="0" alpha="0.6" />
+                <s:GradientEntry id="arrowFill1" color="0" alpha="0.4" />
                 <!--- @private
                       The second part of the arrow's gradient fill. 
                       The default alpha is .6. The default color if 0x000000. -->
-                <s:GradientEntry id="arrowFill2" color="0" alpha="0.8" />
+                <s:GradientEntry id="arrowFill2" color="0" alpha="0.4" />
             </s:RadialGradient>
         </s:fill>
     </s:Path>
