@@ -90,7 +90,7 @@ package org.lala.comments
             this.autoSize = "left";
             this.text = item.text;
             this.border = item.border;
-            this.borderColor = 0x66FFFF;
+            this.borderColor = 0x0099FF;
             this.filters = config.filter;
         }
         /**

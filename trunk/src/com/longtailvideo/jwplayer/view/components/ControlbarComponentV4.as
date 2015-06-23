@@ -30,6 +30,8 @@ package com.longtailvideo.jwplayer.view.components {
 	import flash.utils.clearTimeout;
 	import flash.utils.setTimeout;
 	
+	import org.lala.plugins.CommentView;
+	
 	public class ControlbarComponentV4 extends CoreComponent implements IControlbarComponent {
 		/** Reference to the original skin **/
 		private var skin:Sprite;
@@ -78,6 +80,8 @@ package com.longtailvideo.jwplayer.view.components {
 					nextButton: ViewEvent.JWPLAYER_VIEW_NEXT,
 					fullscreenButton: ViewEvent.JWPLAYER_VIEW_FULLSCREEN,
 					normalscreenButton: ViewEvent.JWPLAYER_VIEW_FULLSCREEN,
+					//loopButton: "loopButtonHandler",
+					//unloopButton: "unloopButtonHandler",
 					muteButton: ViewEvent.JWPLAYER_VIEW_MUTE,
 					unmuteButton: ViewEvent.JWPLAYER_VIEW_MUTE};
 			skin = _player.skin.getSWFSkin().getChildByName('controlbar') as Sprite;
@@ -100,6 +104,7 @@ package com.longtailvideo.jwplayer.view.components {
 			stacker = new Stacker(skin as MovieClip);
 			try {
 				getSkinComponent("linkButton").visible = false;
+				//initButtons();
 			} catch (e:Error) {}
 			
 			setButtons();
@@ -230,6 +235,14 @@ package com.longtailvideo.jwplayer.view.components {
 					case ViewEvent.JWPLAYER_VIEW_MUTE:
 						data = Boolean(!_player.config.mute);
 						break;
+					case "loopButtonHandler":
+						getSkinComponent('unloopButton').visible = false;
+						getSkinComponent('loopButton').visible = true;
+						break;
+					case "unloopButtonHandler":
+						getSkinComponent('loopButton').visible = false;
+						getSkinComponent('unloopButton').visible = true;
+						break;
 				}
 				var event:ViewEvent = new ViewEvent(act, data);
 				dispatchEvent(event);
@@ -299,8 +312,10 @@ package com.longtailvideo.jwplayer.view.components {
 		private function outHandler(evt:MouseEvent):void {
 			if (front && evt.target['icon']) {
 				evt.target['icon'].transform.colorTransform = front;
+				//evt.target['icon'].transform.colorTransform.color = 0xCCCCCC;
 			} else {
-				evt.target.gotoAndPlay('out');
+				//evt.target.gotoAndPlay('out');
+				//evt.target['icon'].transform.colorTransform.color = 0xCCCCCC;
 			}
 		}
 
@@ -310,7 +325,9 @@ package com.longtailvideo.jwplayer.view.components {
 			if (front && evt.target['icon']) {
 				evt.target['icon'].transform.colorTransform = light;
 			} else {
-				evt.target.gotoAndPlay('over');
+				//evt.target.gotoAndPlay('over');
+				//light.color = 0x0099FF;
+				//evt.target['icon'].transform.colorTransform = light;
 			}
 		}
 
@@ -375,9 +392,13 @@ package com.longtailvideo.jwplayer.view.components {
 			}
 			if (_player.config.lightcolor) {
 				light = new ColorTransform();
-				light.color = _player.config.lightcolor.color;
+				light.color = 0x0099FF;
+				//light.color = _player.config.lightcolor.color;
 			} else {
-				light = front;
+				//light = front;
+				//This is a simple test
+				light = new ColorTransform();
+				light.color = 0x0099FF;
 			}
 			if (light) {
 				try {
@@ -505,8 +526,8 @@ package com.longtailvideo.jwplayer.view.components {
 				pct = 1;
 			}
 			try {
-				(getSkinComponent('elapsedText') as TextField).text = Strings.digits(pos);
-				(getSkinComponent('totalText') as TextField).text = Strings.digits(dur);
+				//(getSkinComponent('elapsedText') as TextField).text = Strings.digits(pos);
+				(getSkinComponent('totalText') as TextField).text =Strings.digits(pos)+" / "+Strings.digits(dur);
 			} catch (err:Error) {
 				Logger.log(err);
 			}
@@ -606,6 +627,17 @@ package com.longtailvideo.jwplayer.view.components {
 			return skin.getChildByName(element) as DisplayObject;
 		}
 
+		
+		private function initButtons():void {
+			if(player.config.repeat){
+				getSkinComponent('loopButton').visible = false;
+				getSkinComponent('unloopButton').visible = true;
+			}
+			else{
+				getSkinComponent('unloopButton').visible = false;
+				getSkinComponent('loopButton').visible = true;
+			}
+		}
 
 		private function getSkinElementChild(element:String, child:String):DisplayObject {
 			return (skin.getChildByName(element) as MovieClip).getChildByName(child);
