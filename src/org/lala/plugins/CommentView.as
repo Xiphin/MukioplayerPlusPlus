@@ -125,7 +125,7 @@ package org.lala.plugins
             config = conf;
             player.addEventListener(PlaylistEvent.JWPLAYER_PLAYLIST_ITEM,itemHandler);
             player.addEventListener(MediaEvent.JWPLAYER_MEDIA_TIME,timeHandler);
-            player.addEventListener(PlayerStateEvent.JWPLAYER_PLAYER_STATE,stateHandler);
+            player.addEventListener(PlayerStateEvent.JWPLAYER_PLAYER_STATE,stateHandler);			
             /**
             * 把层放置在紧随masked之后
             * 从View.setupLayers函数可以看到JWP的层次结构,Plugin在最表层
@@ -217,12 +217,14 @@ package org.lala.plugins
         {
             var cb:IControlbarComponent = player.controls.controlbar;
             this._innerFullScreenButtonIcon = new InnerFullScreenButtonIcon() as Bitmap;
-      //      _innerFullScreenButton = cb.addButton(this._innerFullScreenButtonIcon,'WideScreen',innerFullScreenButtonHandler);
+           // _innerFullScreenButton = cb.addButton(this._innerFullScreenButtonIcon,'WideScreen',innerFullScreenButtonHandler);
             //innerfullscreenbutton,在ZIP皮肤中文本替换会有误差,布局是由文本控制的这一点不太好,fullscreen一替换谅出问题,取另外名字
             
             _loopButtonIcon = new LoopButtonIcon() as Bitmap;
 //            cb.addButton(_loopButtonIcon,'LoopBt',loopButtonHandler);
 			
+			player.addEventListener("loopButtonHandler",loopButtonHandler);
+			player.addEventListener("unloopButtonHandler",loopButtonHandler);
             _loopButtonIcon.alpha = player.config.repeat != 'single' ? 0.5 : 1;
             //使用ZIP皮肤时必须在装好按钮后设置
             
@@ -241,15 +243,17 @@ package org.lala.plugins
         **/
         private function loopButtonHandler(event:Event):void
         {
+			var cb:IControlbarComponent = player.controls.controlbar;
             if(player.config.repeat != true )
             {
                 player.config.repeat  = true;
-                _loopButtonIcon.alpha = 1;
+               // _loopButtonIcon.alpha = 1;
+				//在ControlBarComponentsV4中设置
             }
             else
             {
                 player.config.repeat  = false;
-                _loopButtonIcon.alpha = .5;
+                //_loopButtonIcon.alpha = .5;
             }
         }
         /** 状态改变事件监听器,监听暂停或者播放 **/

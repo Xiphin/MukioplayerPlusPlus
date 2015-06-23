@@ -42,6 +42,7 @@ package org.lala.components
             g.clear();
             
             var color2:uint;
+			color2 = 0xFFFFFF;
             if(dataIndex<this.dataProvider.length)
             {;	
                 if(String(this.dataProvider.getItemAt(dataIndex).mode) == '10')
