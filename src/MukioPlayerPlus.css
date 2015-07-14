@@ -17,6 +17,7 @@
 	thumbSkin:ClassReference("org.lala.components.skins.ScrollThumbSkin");
 	trackSkin:ClassReference("org.lala.components.skins.ScrollTrackSkin");
 }
+
 .italicBtStyle
 {
     font-style:italic;

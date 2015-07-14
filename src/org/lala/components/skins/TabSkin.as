@@ -238,7 +238,7 @@ package org.lala.components.skins
 					// tab fill color
 					drawRoundRect(
 						1, 1, w - 2, h - 2, cr2,
-						0x0099FF, 0.3);
+						0xFFFFFF, 1);
 /***					
 					// tab bottom line
 					if (drawBottomLine)
