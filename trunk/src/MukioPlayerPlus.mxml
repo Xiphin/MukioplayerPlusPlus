@@ -335,7 +335,22 @@
 			/** 应用程序初始化 **/
 			private function application1_applicationCompleteHandler(event:FlexEvent):void
 			{
+				[Embed(source='assets/wideScreenIcon.png')]
+				var wideScreenIcon:Class;
+				[Embed(source='assets/wideScreenIconHor.png')]
+				var wideScreenIconHor:Class;
+				
 				currentState = appConfig.state;
+				if(currentState=='normal')
+				{	
+					ExternalInterface.call("mukioWide",false);
+					wideToggleBt.setStyle("icon",wideScreenIcon);
+				}
+				else
+				{
+					ExternalInterface.call("mukioWide",true);
+					wideToggleBt.setStyle("icon",wideScreenIconHor);
+				}
 				
 				commentView.addEventListener("innerFullScreen",innerFullScreenHandler);
 				commentView.version = version;
@@ -347,15 +362,22 @@
 			/**处理切换宽屏幕事件**/
 			private function wideToggleEvent():void
 			{
+				[Embed(source='assets/wideScreenIcon.png')]
+				var wideScreenIcon:Class;
+				[Embed(source='assets/wideScreenIconHor.png')]
+				var wideScreenIconHor:Class;
+				
 				if(currentState=='normal')
 				{	
 					currentState="wideScreen";
 					ExternalInterface.call("mukioWide",true);
+					wideToggleBt.setStyle("icon",wideScreenIconHor);
 				}
 				else
 				{
 					currentState="normal";
 					ExternalInterface.call("mukioWide",false);
+					wideToggleBt.setStyle("icon",wideScreenIcon);
 				}
 				
 				
@@ -453,6 +475,11 @@
 			 **/
 			protected function visibleButtonHandler(event:Event):void
 			{
+				[Embed(source='assets/commentShowIcon.png')]
+				var commentShowIcon:Class;
+				[Embed(source='assets/commentShowIconHor.png')]
+				var commentShowIconHor:Class;
+				
 				var cmtConfig:CommentConfig = CommentConfig.getInstance();
 				var _clip:Sprite = commentView.clip;
 				var _visibleButtonIcon:DisplayObject = visibleToggleBt;
@@ -461,13 +488,47 @@
 				{
 					cmtConfig.visible  = false;
 					_clip.visible = false;
-					_visibleButtonIcon.alpha = .5;
+					visibleToggleBt.setStyle("icon",commentShowIcon);
 				}
 				else
 				{
 					cmtConfig.visible  = true;
 					_clip.visible = true;
-					_visibleButtonIcon.alpha = 1;
+					visibleToggleBt.setStyle("icon",commentShowIconHor);
+				}
+			}
+			
+			protected function TabNavOnChange():void
+			{
+				[Embed(source='assets/listIcon.png')]
+				var listIcon:Class;
+				[Embed(source='assets/configIcon.png')]
+				var configIcon:Class;
+				[Embed(source='assets/scriptIcon.png')]
+				var scriptIcon:Class;
+				[Embed(source='assets/listIconHor.png')]
+				var listIconHor:Class;
+				[Embed(source='assets/configIconHor.png')]
+				var configIconHor:Class;
+				[Embed(source='assets/scriptIconHor.png')]
+				var scriptIconHor:Class;
+				
+				navCmt.icon = listIcon;
+				navSet.icon = configIcon;
+				navAdv.icon = scriptIcon;
+				switch( TabNav.selectedIndex){
+					case 0:
+						navCmt.icon = listIconHor;
+						break;
+					case 1:
+						navSet.icon = configIconHor;
+						break;
+					case 2:
+						navAdv.icon = scriptIconHor;
+						break;
+					default:
+						log("无法识别的当前页");
+						break;
 				}
 			}
 		]]>
@@ -485,16 +546,16 @@
 			</s:BorderContainer>
 			<s:HGroup excludeFrom="fullScreen" width="100%" gap="1">
 				<mk:NormalCommentInput id="normalCommentInput" width="100%" height="22" />
-				<mk:IconButton id="visibleToggleBt" icon="@Embed(source='assets/commentShowIcon.png')" right="0" click="visibleButtonHandler(event)" width="26" height="22" skinClass="org.lala.components.skins.IconButtonSkin"/>
+				<mk:IconButton id="visibleToggleBt" icon="@Embed(source='assets/commentShowIconHor.png')" right="0" click="visibleButtonHandler(event)" width="26" height="22" skinClass="org.lala.components.skins.IconButtonSkin"/>
 				<mk:IconButton id="wideToggleBt" icon="@Embed(source='assets/wideScreenIcon.png')" right="0" click="wideToggleEvent()" width="26" height="22" skinClass="org.lala.components.skins.IconButtonSkin"/>
 			</s:HGroup>
 		</s:Group>
-		<mx:TabNavigator tabStyleName="tabBar" height="100%" width="100%" excludeFrom="fullScreen" paddingTop="0" borderVisible="false" width.normal="300" width.wideScreen="0" right="0" top="0">
-			<s:NavigatorContent width="100%" height="100%" label="弹幕"
-								icon="@Embed(source='assets/listIcon.png')">
+		<mx:TabNavigator id="TabNav" change="TabNavOnChange();"  tabStyleName="tabBar" height="100%" width="100%" excludeFrom="fullScreen" paddingTop="0" borderVisible="false" width.normal="300" width.wideScreen="0" right="0" top="0">
+			<s:NavigatorContent id="navCmt" width="100%" height="100%" label="弹幕"
+								icon="@Embed(source='assets/listIconHor.png')">
 				<mk:CmtDataGrid id="cmtTable"  headerSeparatorSkin="org.lala.components.skins.DataGridHeaderSeparator" headerStyleName="boldStyle"  borderColor="0xDDDDDD" verticalScrollBarStyleName="cmtSBS" headerBackgroundSkin="org.lala.components.DataGridHeaderSkin" styleName="cmtDataGridStyle" x="0" y="0" width="100%" height="100%" horizontalScrollPolicy.wideScreen="on" dataProvider="{commentView.provider.commentResource}" columns="{cmtColumns}" />
 			</s:NavigatorContent>
-			<mx:Accordion label="弹幕设置" headerStyleName="customAccordionHeadStyles" borderColor="0xDDDDDD" icon="@Embed(source='assets/configIcon.png')">
+			<mx:Accordion id="navSet" label="弹幕设置" headerStyleName="customAccordionHeadStyles" borderColor="0xDDDDDD" icon="@Embed(source='assets/configIcon.png')">
 				<s:NavigatorContent label="系统设置" width="100%" height="100%">
 					<mk:CommentConfigInput id="commentConfigInput" enabled="{currentState=='normal'}"/>
 				</s:NavigatorContent>
@@ -502,7 +563,7 @@
 					<mk:CommentFilterInput id="commentFilterInput" enabled="{currentState=='normal'}"/>
 				</s:NavigatorContent>
 			</mx:Accordion>
-			<mx:Accordion label="高级弹幕" headerStyleName="customAccordionHeadStyles" borderColor="0xDDDDDD" icon="@Embed(source='assets/scriptIcon.png')">
+			<mx:Accordion id="navAdv" label="高级弹幕" headerStyleName="customAccordionHeadStyles" borderColor="0xDDDDDD" icon="@Embed(source='assets/scriptIcon.png')">
 				<s:NavigatorContent label="zoome字幕" width="100%" height="100%">
 					<mk:ZoomeCommentInput id="zoomeCommentInput" enabled="{currentState=='normal'}"/>
 				</s:NavigatorContent>
