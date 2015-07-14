@@ -91,7 +91,8 @@ package org.lala.comments
             this.text = item.text;
             this.border = item.border;
             this.borderColor = 0x0099FF;
-            this.filters = config.filter;
+            //this.filters = config.filter;
+			this.filters = config.getFilterColor(item.color);
         }
         /**
          * 恢复播放
