@@ -36,9 +36,19 @@ package org.lala.utils
         public var filterIndex:int = 0;
         [Bindable]
         public var filtersArr:ArrayCollection = new ArrayCollection([
-            {label:"细边",data:[new GlowFilter(0, 0.7, 3,3)]},
-            {label:"浅影",data:[new DropShadowFilter(2, 45, 0, 0.6)]},
-            {label:"深影",data:[new GlowFilter(0, 0.85, 4, 4, 3, 1, false, false)]}
+            {
+				label:"细边",
+				black:[new GlowFilter(0, 0.7, 3,3)],
+				white:[new GlowFilter(0xFFFFFF, 0.7, 3,3)]
+			}, {
+				label:"浅影",
+				black:[new DropShadowFilter(2, 45, 0, 0.6)],
+				white:[new DropShadowFilter(2, 45, 0xFFFFFF, 0.6)]
+			}, {
+				label:"深影",
+				black:[new GlowFilter(0, 0.85, 4, 4, 3, 1, false, false)],
+				white:[new GlowFilter(0xFFFFFF, 0.85, 4, 4, 3, 1, false, false)]
+			}
         ]);
         private var _font:String='黑体';
         [Bindable]
@@ -161,9 +171,24 @@ package org.lala.utils
         
         public function get filter():Array
         {
-            return filtersArr[filterIndex].data;
+            return filtersArr[filterIndex].black;
         }
 
+		/**
+		 * 根据弹幕颜色返回边框颜色
+		 * **/
+		public function getFilterColor(color:uint ):Array
+		{
+			var colorR:uint;
+			var colorG:uint
+			var colorB:uint;
+			colorR = color / 0x010000;
+			colorG = color / 0x000100 % 0x000100;
+			colorB = color % 0x000100;
+			if(colorR>=0x20 || colorG>=0x20 || colorB>=0x20)return filtersArr[filterIndex].black;
+			else return filtersArr[filterIndex].white;
+		}
+		
         [Bindable]
         /** 是否让界面使用弹幕字体?,在非中文系统中可以解决
          * Spark组件不能显示汉字的问题 **/
