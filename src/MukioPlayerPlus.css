@@ -11,6 +11,12 @@
 	verticalGridLines: false;
 	horizontalGridLineColor:"0xDDDDDD";
 }
+.cmtSBS{
+	downArrowSkin:ClassReference("org.lala.components.skins.ScrollArrowSkin");
+	upArrowSkin:ClassReference("org.lala.components.skins.ScrollArrowSkin");
+	thumbSkin:ClassReference("org.lala.components.skins.ScrollThumbSkin");
+	trackSkin:ClassReference("org.lala.components.skins.ScrollTrackSkin");
+}
 .italicBtStyle
 {
     font-style:italic;

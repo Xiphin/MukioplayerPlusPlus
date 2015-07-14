@@ -19,5 +19,5 @@
         ]]>
     </fx:Script>
 
-    <s:CheckBox id="checkBox" selected="{data.enable}" click="checkBox_clickHandler(event)" label="{data.enable?'启用':'未启用'}" width="100%"/>
+    <s:CheckBox id="checkBox" selected="{data.enable}" click="checkBox_clickHandler(event)" label="{data.enable?'启用':'未启用'}" width="100%" skinClass="org.lala.components.skins.SparkCheckBoxSkin"/>
 </s:MXDataGridItemRenderer>

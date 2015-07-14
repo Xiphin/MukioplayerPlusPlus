@@ -246,6 +246,7 @@
 						
 					else log('参数有误,无法继续加载');
 				}
+				else cmtItem.cid = config.cid;	
 				
 				/***
 				 if(config.vid != null)
@@ -491,9 +492,9 @@
 		<mx:TabNavigator tabStyleName="tabBar" height="100%" width="100%" excludeFrom="fullScreen" paddingTop="0" borderVisible="false" width.normal="300" width.wideScreen="0" right="0" top="0">
 			<s:NavigatorContent width="100%" height="100%" label="弹幕"
 								icon="@Embed(source='assets/listIcon.png')">
-				<mk:CmtDataGrid id="cmtTable"  headerSeparatorSkin="org.lala.components.skins.DataGridHeaderSeparator" headerStyleName="boldStyle"  borderColor="0xDDDDDD" headerBackgroundSkin="org.lala.components.DataGridHeaderSkin" styleName="cmtDataGridStyle" x="0" y="0" width="100%" height="100%" horizontalScrollPolicy.wideScreen="on" dataProvider="{commentView.provider.commentResource}" columns="{cmtColumns}" />
+				<mk:CmtDataGrid id="cmtTable"  headerSeparatorSkin="org.lala.components.skins.DataGridHeaderSeparator" headerStyleName="boldStyle"  borderColor="0xDDDDDD" verticalScrollBarStyleName="cmtSBS" headerBackgroundSkin="org.lala.components.DataGridHeaderSkin" styleName="cmtDataGridStyle" x="0" y="0" width="100%" height="100%" horizontalScrollPolicy.wideScreen="on" dataProvider="{commentView.provider.commentResource}" columns="{cmtColumns}" />
 			</s:NavigatorContent>
-			<mx:Accordion label="弹幕设置" headerStyleName="customAccordionHeadStyles" borderColor="0xDDDDDD" icon="@Embed(source='assets/scriptIcon.png')">
+			<mx:Accordion label="弹幕设置" headerStyleName="customAccordionHeadStyles" borderColor="0xDDDDDD" icon="@Embed(source='assets/configIcon.png')">
 				<s:NavigatorContent label="系统设置" width="100%" height="100%">
 					<mk:CommentConfigInput id="commentConfigInput" enabled="{currentState=='normal'}"/>
 				</s:NavigatorContent>
