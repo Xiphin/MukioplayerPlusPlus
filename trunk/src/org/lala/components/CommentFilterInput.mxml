@@ -64,5 +64,5 @@
 颜色表达式:c=[颜色十六进制文本](c=ff0000)</s:toolTip>
         </s:TextInput><s:Button id="addBt" label="添加" width="50" right="5" click="addBt_clickHandler(event);" skinClass="org.lala.components.skins.SparkButtonSkin"/>
     </s:HGroup>
-    <mk:CmtDataGrid width="100%" styleName="cmtDataGridStyle"  headerStyleName="boldStyle"  headerSeparatorSkin="org.lala.components.skins.DataGridHeaderSeparator" headerBackgroundSkin="org.lala.components.DataGridHeaderSkin" borderColor="0xDDDDDD" height="100%" bottom="0" dataProvider="{filter.filterSource}"  columns="{filterColumns}"  />
+    <mk:CmtDataGrid width="100%" styleName="cmtDataGridStyle" verticalScrollBarStyleName="cmtSBS"  headerStyleName="boldStyle"  headerSeparatorSkin="org.lala.components.skins.DataGridHeaderSeparator" headerBackgroundSkin="org.lala.components.DataGridHeaderSkin" borderColor="0xCCCCCC" height="100%" bottom="0" dataProvider="{filter.filterSource}"  columns="{filterColumns}"  />
 </s:Group>
