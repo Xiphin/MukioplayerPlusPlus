@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
          xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mk="org.lala.components.*" 
          xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" xmlns:zoomeInputElements="org.lala.components.zoomeInputElements.*" resize="group1_resizeHandler(event)">
     <s:states>
         <s:State name="normal"/>
@@ -247,13 +248,13 @@
 100:不透明
 建议设置在80以下</mx:toolTip>
             <s:HGroup>
-                <s:HSlider id="opacitySld" maximum="100" minimum="0" snapInterval="10" value="40"  height="14" width="100" liveDragging="true"  skinClass="org.lala.components.skins.SparkHSliderSkin"/>
+                <mk:HSlider id="opacitySld" maximum="100" minimum="0" snapInterval="10" value="40"  height="14" width="100" liveDragging="true"  skinClass="org.lala.components.skins.HSliderSkin"/>
                 <s:Label id="opacityLb" text="{opacitySld.value}"/>
             </s:HGroup>
         </mx:FormItem>
         <mx:FormItem label="停留时间">
             <s:HGroup>
-                <s:HSlider id="durationSld" maximum="8000" minimum="0" snapInterval="500" value="1000" height="14" width="100" liveDragging="true"   skinClass="org.lala.components.skins.SparkHSliderSkin"/>
+                <mk:HSlider id="durationSld" maximum="8000" minimum="0" snapInterval="500" value="1000" height="14" width="100" liveDragging="true"   skinClass="org.lala.components.skins.HSliderSkin"/>
                 <s:Label id="durationLb" text="{durationSld.value}毫秒" />
             </s:HGroup>
         </mx:FormItem>
@@ -262,7 +263,7 @@
                 <s:DropDownList id="inEffectCb" labelField="label" dataProvider="{inEffectArr}" selectedIndex="0" skinClass="org.lala.components.skins.SparkDropDownListSkin"/>
            </s:HGroup>
 			<s:HGroup>
-				<s:HSlider id="inEffectSld" maximum="360" minimum="0" snapInterval="15" value="0" width="100" height="14" liveDragging="true" enabled="{inEffectCb.selectedIndex==3}"   skinClass="org.lala.components.skins.SparkHSliderSkin"/>
+				<mk:HSlider id="inEffectSld" maximum="360" minimum="0" snapInterval="15" value="0" width="100" height="14" liveDragging="true" enabled="{inEffectCb.selectedIndex==3}"   skinClass="org.lala.components.skins.HSliderSkin"/>
 				<s:Label id="inEffectLb" text="{inEffectSld.value}"/>
 			</s:HGroup>
         </mx:FormItem>
@@ -271,7 +272,7 @@
                 <s:DropDownList id="outEffectCb" labelField="label" dataProvider="{outEffectArr}" selectedIndex="0" skinClass="org.lala.components.skins.SparkDropDownListSkin"/>
             </s:HGroup>
 			<s:HGroup>
-				<s:HSlider id="outEffectSld" maximum="360" minimum="0" snapInterval="15" value="0" width="100" height="14" liveDragging="true" enabled="{outEffectCb.selectedIndex==3}"  skinClass="org.lala.components.skins.SparkHSliderSkin"/>
+				<mk:HSlider id="outEffectSld" maximum="360" minimum="0" snapInterval="15" value="0" width="100" height="14" liveDragging="true" enabled="{outEffectCb.selectedIndex==3}"  skinClass="org.lala.components.skins.HSliderSkin"/>
 				<s:Label id="outEffectLb" text="{outEffectSld.value}"/>
 			</s:HGroup>
         </mx:FormItem>

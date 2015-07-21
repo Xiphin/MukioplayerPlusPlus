@@ -82,7 +82,7 @@ HSliderThumbSkin and HSliderTrackSkin classes, respectively.
            <s:DataRenderer minHeight="24" minWidth="40" y="-34">  
               <s:Rect top="0" left="0" right="0" bottom="0">
                     <s:fill>
-                        <s:SolidColor color="0x000000" alpha=".9"/>
+                        <s:SolidColor color="0xFFFFFF" alpha=".9"/>
                     </s:fill>
                     <s:filters>
                         <s:DropShadowFilter angle="90" color="0x999999" distance="3"/>
@@ -92,7 +92,7 @@ HSliderThumbSkin and HSliderTrackSkin classes, respectively.
                          horizontalCenter="0" verticalCenter="1"
                          left="5" right="5" top="5" bottom="5"
                          textAlign="center" verticalAlign="middle"
-                         fontWeight="normal" color="white" fontSize="11">
+                         fontWeight="normal" color="black" fontSize="11">
                 </s:Label>
             </s:DataRenderer>
        </fx:Component>

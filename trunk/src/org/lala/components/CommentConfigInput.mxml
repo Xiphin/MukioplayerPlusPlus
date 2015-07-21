@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
          xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mk="org.lala.components.*" 
          xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" creationComplete="group1_creationCompleteHandler(event)">
     <s:layout>
         <s:VerticalLayout/>
@@ -108,14 +109,16 @@
 			<s:DropDownList id="filterLst" dataProvider="{config.filtersArr}" labelField="label" selectedIndex="@{config.filterIndex}" change="config.save();"  width="160" skinClass="org.lala.components.skins.SparkDropDownListSkin"/>        
         </s:FormItem>
         <s:FormItem label="弹幕透明"  skinClass="org.lala.components.skins.SparkFormItemSkin">
-            <s:HSlider id="alphaSld" width="155" maximum="1" minimum="0" snapInterval="0.05" change="config.save();" value="@{config.alpha}"  skinClass="org.lala.components.skins.SparkHSliderSkin" />
+            <mk:HSlider id="alphaSld" width="155" change="config.save();" maximum="1"
+						minimum="0" skinClass="org.lala.components.skins.HSliderSkin"
+						snapInterval="0.05" value="@{config.alpha}"/>
         </s:FormItem>
         <s:FormItem label="速度调节"  skinClass="org.lala.components.skins.SparkFormItemSkin">
-            <s:HSlider id="speedeSld" width="155" maximum="2" minimum="0.1" snapInterval="0.1" value="@{config.speede}" change="config.save();"  skinClass="org.lala.components.skins.SparkHSliderSkin"  />
+            <mk:HSlider id="speedeSld" width="155" maximum="2" minimum="0.1" snapInterval="0.1" value="@{config.speede}" change="config.save();"  skinClass="org.lala.components.skins.HSliderSkin"  />
         </s:FormItem>
         <s:FormItem label="字号缩放"  skinClass="org.lala.components.skins.SparkFormItemSkin">
-            <s:HSlider id="sizeeSld" width="155" change="config.save();" maximum="2" minimum="0.1"
-					   skinClass="org.lala.components.skins.SparkHSliderSkin" snapInterval="0.1"
+            <mk:HSlider id="sizeeSld" width="155" change="config.save();" maximum="2" minimum="0.1"
+					   skinClass="org.lala.components.skins.HSliderSkin" snapInterval="0.1"
 					   value="@{config.sizee}"/>
         </s:FormItem>
         <s:FormItem label="脚本配置"  skinClass="org.lala.components.skins.SparkFormItemSkin">
