@@ -23,6 +23,7 @@
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[
+			import org.lala.components.HSlider;
 			import com.longtailvideo.jwplayer.player.Player;
 			import com.longtailvideo.jwplayer.utils.Strings;
 			
@@ -63,6 +64,8 @@
 			private var server:CommentServer;
 			/** 应用程序配置 **/
 			private var appConfig:AppConfig;
+			
+			private var org_lala_components_HSlider_obj:org.lala.components.HSlider;
 			
 			/**
 			 * 播放器的初始化完成
