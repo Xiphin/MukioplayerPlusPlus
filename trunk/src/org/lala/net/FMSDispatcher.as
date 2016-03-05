@@ -5,6 +5,7 @@ package org.lala.net
 	import flash.net.NetConnection;
 	
 	import org.lala.event.MukioEvent;
+	import org.lala.event.EventBus;
 	
 	/**
 	 * 有新弹幕
@@ -22,6 +23,7 @@ package org.lala.net
 			nc.client = this;
 			nc.addEventListener(NetStatusEvent.NET_STATUS, netStatusHandler);
 			nc.connect(url);
+			//nc.connect("rtmfp://127.0.0.1:1935/RTD");
 			
 			rnd = Math.floor(Math.random() * 0x1000000);
 		}

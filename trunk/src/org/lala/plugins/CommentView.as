@@ -221,7 +221,7 @@ package org.lala.plugins
             //innerfullscreenbutton,在ZIP皮肤中文本替换会有误差,布局是由文本控制的这一点不太好,fullscreen一替换谅出问题,取另外名字
             
             _loopButtonIcon = new LoopButtonIcon() as Bitmap;
-//            cb.addButton(_loopButtonIcon,'LoopBt',loopButtonHandler);
+            cb.addButton(_loopButtonIcon,'LoopBt',loopButtonHandler);
 			
 			player.addEventListener("loopButtonHandler",loopButtonHandler);
 			player.addEventListener("unloopButtonHandler",loopButtonHandler);
@@ -244,15 +244,15 @@ package org.lala.plugins
         private function loopButtonHandler(event:Event):void
         {
 			var cb:IControlbarComponent = player.controls.controlbar;
-            if(player.config.repeat != true )
+            if(player.config.repeat != 'single' )
             {
-                player.config.repeat  = true;
+                player.config.repeat  = 'single';
                // _loopButtonIcon.alpha = 1;
 				//在ControlBarComponentsV4中设置
             }
             else
             {
-                player.config.repeat  = false;
+                player.config.repeat  = 'none';
                 //_loopButtonIcon.alpha = .5;
             }
         }

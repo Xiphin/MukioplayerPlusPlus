@@ -27,3 +27,19 @@ FlashBuilder编译方法:
 
 aristotle9
 2011年6月4日
+
+-------------------
+
+MukioPlayerPlusPlus
+源代码
+
+使用协议：同上
+
+编译环境：
+Flex SDK 4.7及以上，否则IE与Firefox浏览器下弹幕字体不正确
+请在编译选项中打开"在MX组件中使用Flash文本引擎"
+
+项目主页：https://github.com/mukio/mukioplayer
+
+jiangming1399
+2015年8月6日
