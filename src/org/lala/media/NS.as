@@ -85,7 +85,7 @@ package org.lala.media
             _$ptimer.stop();
             _$btimer.stop();
             _$ns.pause();
-            _$ns.seek(0);
+            //_$ns.seek(0);
             return;
         }// end function
 
